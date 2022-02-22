@@ -1,7 +1,7 @@
 /*
  prime.c
  By David Broman.
- Last modified by Thomas Gustafsson: 2022-02-10
+ Last modified by Mattias Sandberg: 2022-02-10
  This file is in the public domain.
 */
 
@@ -25,6 +25,8 @@ int is_prime(int n)
    }
    return 1;                    // Annars returnera 1
  }
+
+
 
  int main(void){
    printf("%d\n", is_prime(1));  // 11 is a prime.      Should print 0.
