@@ -1,7 +1,7 @@
 /*
- print-primes.c
+ prime.c
  By David Broman.
- Last modified by Thomas Gustafsson: 2022-02-10
+ Last modified by Mattias Sandberg: 2022-02-10
  This file is in the public domain.
 */
 
