@@ -21,9 +21,7 @@ int is_prime(int n)
                                 som är mindre eller lika med n-1*/
    {
      if(n % r == 0)             // Om resten med efter divison är 0, returnera 0
-     {
        return 0;
-     }
    }
    return 1;                    // Annars returnera 1
  }
@@ -35,29 +33,23 @@ void print_numbers(int number)
   printf("%10d ", number);
   column_count++;
   if(column_count % COLUMNS == 0)
-	{
     printf("\n");
-  }
 }
 
 // funktionen ska printa ut alla primtal från 2 till (user input) genom att roppa på print_numbers och dess prime
 void print_primes (int n)
 {
 	if (n<2)
-  {
 		printf("Saknas primtal mindre än: %10i", n);
-	}
-    else
-		{
-			int x = 2;
-			for(x=2; x<n; x++)
-      {
-				if (is_prime(x) == 1 )
-				{
-				  print_numbers(x);
-				}
-			}
+     	else
+	{
+		int x = 2;
+		for(x=2; x<n; x++)
+      		{
+			if (is_prime(x) == 1 )
+				print_numbers(x);
 		}
+	}
 
 }
 
@@ -69,6 +61,6 @@ void print_primes (int n)
   if(argc == 2)
     print_primes(atoi(argv[1]));
   else
-    printf("Please state an interger number.\n");
+    printf("Please state an integer number.\n");
   return 0;
 }
