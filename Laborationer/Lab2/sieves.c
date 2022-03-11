@@ -10,20 +10,17 @@
 int column_count = 0;
 void print_numbers(int number)
 {
+  if(column_count % COLUMNS == 0 && column_count != 0)
+    printf("\n");
+
   printf("%10d ", number);
   column_count++;
-  if(column_count % COLUMNS == 0)
-	{
-    printf("\n");
-  }
 }
-
-
 
 // Funktionen ska skriva alla primtal från 2 till n genom att kalla på print_numbers och dess primtal
 void print_sieves(int input)
 {
-    int array_size = input - 1;  // deklarerar arrayen som vi kommer att arbeta med (-1 för array börjar på 0,1,2 osv)
+    int array_size = input + 1;  // deklarerar arrayen som vi kommer att arbeta med (-1 för array börjar på 0,1,2 osv)
     char numbers[array_size];    // deklarerar lokal array
 
     for(int pos = 0; pos < array_size; pos++) // sätter arrayplatserna till 1 (True)
@@ -41,14 +38,20 @@ void print_sieves(int input)
       }
     }
 
-    //printar ut det sanna värderna från arrayen genom att roppa till print_numbers och börjar på index 2 då 0 och 1 ignoreras
+    // Surprise assignment - print average distance between prime numbers
+    int temp = 0;
+    int avstand = 0;
     for(int i = 2; i <= array_size; i++)
-		{
-      if(numbers[i] == 1)
-			{
-        print_numbers(i);
-      }
+    {
+        if(numbers[i] == 1)
+        {
+          print_numbers(i); // från förut
+          avstand += i - temp;
+          temp = i;
+        }
     }
+    avstand /= column_count;
+    printf("\n Medelavståndet mellan primtalen är %d ", avstand);
 }
 // 'argc' contains the number of program arguments, and
 // 'argv' is an array of char pointers, where each
@@ -58,6 +61,6 @@ int main(int argc, char *argv[])
   if(argc == 2)
     print_sieves(atoi(argv[1]));
   else
-    printf("Please state an interger number.\n");
+    printf("Please state an integer number.\n");
   return 0;
 }
